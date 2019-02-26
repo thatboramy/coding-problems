@@ -6,11 +6,7 @@
 #include <string>
 using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n"; 
-
-	string test_data = "A";
+ string encode(string test_data) {
 	string answer = "";
 
 
@@ -44,7 +40,34 @@ int main()
 			}
 		}
 	}
-	cout << answer << endl;
+
+	return answer;
+}
+
+ string decode(string test_data) {
+	 string answer = "";
+
+	 for (int i = 0; i < test_data.length(); i++) {
+		 int iteration = atoi(&(test_data.at(i)));
+		 char c = test_data.at(i + 1);
+
+		 for (int j = 0; j < iteration; j++) {
+			 answer = answer + c;
+		 }
+
+		 i = i + 1;
+	 }
+
+	 return answer;
+ }
+int main()
+{
+    std::cout << "Hello World!\n"; 
+
+	string test = encode("AAAABBCCCADDD");
+
+	string test2 = decode(test);
+	cout << test << endl;
 	printf("Done with all the code");
 }
 
