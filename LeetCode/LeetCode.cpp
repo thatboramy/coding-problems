@@ -3,10 +3,49 @@
 
 #include "pch.h"
 #include <iostream>
+#include <string>
+using namespace std;
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+
+	string test_data = "A";
+	string answer = "";
+
+
+	if (test_data.length() == 1) {
+		answer = "1" + test_data;
+	}
+	else {
+
+		for (int i = 0; i < test_data.length(); i++) {
+			char c = test_data.at(i);
+			printf("Testing out character: %c\n", c);
+			for (int j = i + 1; j < test_data.length(); j++) {
+
+				//printf("Reading character: %c\n", test_data.at(j));
+
+				if (j == (test_data.length() - 1)) {
+					//printf("Finished reading the last character %d. Final Length is %d\n", test_data.at(i), j - i + 1);
+					answer = answer + to_string(j - i + 1) + c;
+					i = j;
+					break;
+				}
+
+				if (test_data.at(j) != test_data.at(i)) {
+					//printf("Finished reading character %c. Lenghth is %d\n", test_data.at(i), j - i);
+					int length = j - i;
+					answer = answer + to_string(length) + c;
+					i = j - 1;
+					break;
+				}
+
+			}
+		}
+	}
+	cout << answer << endl;
+	printf("Done with all the code");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
